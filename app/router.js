@@ -21,24 +21,24 @@ Router.map(function() {
 		this.route('new');
 		this.resource('company', {path:'/company/:id'}, function(){
 			this.route('index', {path:'/'});
-			this.route('edit')
-		})
+			this.route('edit');
+		});
 	});
 	this.resource('users',function(){
 		this.route('index', {path:'/'});
 		this.route('new');
 		this.resource('user', {path:'/user/:id'}, function(){
 			this.route('index', {path:'/'});
-			this.route('edit')
-		})
+			this.route('edit');
+		});
 	});
 	this.resource('surveys',function(){
 		this.route('index', {path:'/'});
 		this.route('new');
 		this.resource('survey', {path:'/survey/:id'}, function(){
 			this.route('index', {path:'/'});
-			this.route('edit')
-		})
+			this.route('edit');
+		});
 	});
 
 });

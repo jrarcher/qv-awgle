@@ -4,5 +4,5 @@ import LoginControllerMixin from 'simple-auth/mixins/login-controller-mixin';
 export default Ember.Controller.extend(LoginControllerMixin, {
   authenticator: 'custom-auth:oauth2-password-grant',
   password:'foo',
-  identification:'test@test.com'
+  identification:'foo@foo.com'
 });
