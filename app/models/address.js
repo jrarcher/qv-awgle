@@ -12,7 +12,6 @@ export default DS.Model.extend({
 	lon: attr('string'),
 	type: attr('string'),
 	description: attr('string'),
-	owner: attr('string'),
 	cityState:function(){
 		return this.get('city') + ', ' + this.get('state');
 	}.property('city', 'state')

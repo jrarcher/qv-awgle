@@ -1,40 +1,58 @@
-<div class="row">
-    <!-- COLUMN 1 -->
-    <div class="col-md-6">
-        <div class="panel panel-info">
-            <!-- Default panel contents -->
-            <div class="panel-heading">Rights</div>
-            <div class="panel-body">
-                
-            </div>
-            <!-- Table -->
-            <table class="table table-condensed">
-                <thead>
-                    <th>User</th>
-                    <th>Company</th>
-                    <th>Survey</th>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>{{bs-switch labelText="View"}}</td>
-                        <td>{{bs-switch labelText="View"}}</td>
-                        <td>{{bs-switch labelText="View"}}</td>
-                    </tr>
-                    <tr>
-                        <td>{{bs-switch labelText="Edit"}}</td>
-                        <td>{{bs-switch labelText="Edit"}}</td>
-                        <td>{{bs-switch labelText="Edit"}}</td>
-                    </tr>
-                    <tr>
-                        <td>{{bs-switch labelText="Delete"}}</td>
-                        <td>{{bs-switch labelText="Delete"}}</td>
-                        <td>{{bs-switch labelText="Delete"}}</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+<div class="panel panel-success">
+    <div class="panel-heading">
+        <h3 class="panel-title">New User</h3>
     </div>
-    <!-- COLUMN 2 -->
-    <div class="col-md-6">
+    <div class="panel-body">
+        <div class="row">
+            <!-- COLUMN 1 -->
+            <div class="col-md-6">
+                <div class="panel panel-info">
+                    <!-- Default panel contents -->
+                    <div class="panel-heading">Rights</div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-4">
+                                {{username}}
+
+                            </div>
+                            <div class="col-md-4">
+                                can view: {{canViewUser}}
+                            </div>
+                            <div class="col-md-4">
+                                <div class="btn btn-success" {{action "saveUser"}}></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Table -->
+                    <table class="table table-condensed">
+                        <thead>
+                            <th>User</th>
+                            <th>Company</th>
+                            <th>Survey</th>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>{{bs-switch labelText="View" onState=canViewUser action="changeState" name="canViewUser"}}</td>
+                                <td>{{bs-switch labelText="View" onState=canViewCompany action="changeState" name="canViewCompany"}}</td>
+                                <td>{{bs-switch labelText="View" onState=canViewSurvey action="changeState" name="canViewSurvey"}}</td>
+                            </tr>
+                            <tr>
+                                <td>{{bs-switch labelText="Edit" onState=canEditUser action="changeState" name="canEditUser"}}</td>
+                                <td>{{bs-switch labelText="Edit" onState=canEditCompany action="changeState" name="canEditCompany"}}</td>
+                                <td>{{bs-switch labelText="Edit" onState=canEditSurvey action="changeState" name="canEditSurvey"}}</td>
+                            </tr>
+                            <tr>
+                                <td>{{bs-switch labelText="Delete" onState=canDeleteUser action="changeState" name="canDeleteUser"}}</td>
+                                <td>{{bs-switch labelText="Delete" onState=canDeleteCompany action="changeState" name="canDeleteCompany"}}</td>
+                                <td>{{bs-switch labelText="Delete" onState=canDeleteSurvey action="changeState" name="canDeleteSurvey"}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <!-- COLUMN 2 -->
+            <div class="col-md-6">
+            </div>
+        </div>
     </div>
 </div>

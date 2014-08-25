@@ -2,12 +2,12 @@ import Em from "ember";
 
 export default Em.Component.extend({
   tagName: 'input',
-  attributeBindings:['name', 'type', 'checked', 'state', 'size', 'animate', 'disabled', 'readonly',
+  attributeBindings:['name', 'type',  'onState', 'size', 'animate', 'disabled', 'readonly',
   'indeterminate', 'onColor', 'offColor', 'onText', 'offText', 'labelText', 'baseClass', 'wrapperClass',
   'onInit', 'onSwitchChange', 'radioAllOff'],
   type:'checkbox',
-  checked:false,
-	state:Em.computed.alias('checked'),
+  // checked:false,
+	onState:false,
 	size:'normal', //null, 'mini', 'small', 'normal', 'large'
 	animate:true,
 	disabled:false,
@@ -26,7 +26,7 @@ export default Em.Component.extend({
   didInsertElement: function() {
   	var self=this;
      this.$().bootstrapSwitch({
-     	state:self.get('state'),
+     	state:self.get('onState'),
      	size:self.get('size'),
      	animate:self.get('animate'),
      	disabled:self.get('disabled'),
@@ -43,6 +43,11 @@ export default Em.Component.extend({
      	onSwitchChange:self.get('onSwitchChange'),
      	radioAllOff:self.get('radioAllOff')
      });
+     this.$().on('switchChange.bootstrapSwitch', function(event, state){
+        if (self.get('action')){
+          self.sendAction('action', self.get('name'), state);
+        }
+     })
   }.on('didInsertElement')
 });
 			
