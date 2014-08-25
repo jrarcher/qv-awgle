@@ -2,3 +2,24 @@ html, body {
     margin: 30px 20px 20px 20px;
     height:100%;
 }
+
+.users-panel{
+	height:600px;
+	overflow: scroll;
+	min-width: 325px;
+}
+
+.user-card{
+	height:200px;
+	width:300px;
+	float: left;
+	margin-right: 5px;
+	background-color:#fffcf2;
+	overflow: auto;
+}
+.user-table{
+	overflow: auto;
+}
+.my-wrapper{
+	width:300px;
+}

@@ -1,5 +1,14 @@
 import Ember from 'ember';
 
 export default Ember.ArrayController.extend({
-	sortAscending:true
+	sortAscending:true,
+	sortProperties:['username'],
+	actions:{
+		sortDirection:function(){
+			this.toggleProperty('sortAscending');
+		},
+		addUser:function(){
+			this.transitionTo('users.new');
+		}
+	}
 });

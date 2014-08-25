@@ -6,5 +6,8 @@ export default DS.Model.extend({
 	middle: attr('string'),
 	prefix: attr('string'),
 	suffix: attr('string'),
-	owner: attr('string')
+	owner: attr('string'),
+	prettyName:function(){
+		return this.get('last') + ', ' + this.get('first');
+	}.property('first', 'last')
 });

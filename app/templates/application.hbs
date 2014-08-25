@@ -22,37 +22,32 @@
                 {{#link-to "contact" tagName="li"}}
                 <a {{bind-attr href="view.href"}}>Contact</a>
                 {{/link-to}}
-
                 {{#if session.isAuthenticated}}
-                    {{#if session.authUser.right.isAdmin}}
-                        <li class="dropdown">
-                          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dashboard <b class="caret"></b></a>
-                          <ul class="dropdown-menu">
-                            {{#link-to 'dashboard' tagName="li"}}
-                                <a {{bind-attr href="view.href"}}>Overview</a>
-                            {{/link-to}}
-                            <li class="divider"></li>
-                            {{#link-to 'users' tagName="li"}}
-                                <a {{bind-attr href="view.href"}}>Users</a>
-                            {{/link-to}}
-                            {{#link-to 'companies' tagName="li"}}
-                                <a {{bind-attr href="view.href"}}>Companies</a>
-                            {{/link-to}}
-                            {{#link-to 'surveys' tagName="li"}}
-                                <a {{bind-attr href="view.href"}}>Surveys</a>
-                            {{/link-to}}
-                          </ul>
-                        </li>
-                    {{else}}
-                        {{#link-to "dashboard" tagName="li"}}
-                            <a {{bind-attr href="view.href"}}>Dashboard</a>
+                {{#if session.authUser.right.isAdmin}}
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dashboard <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        {{#link-to 'dashboard' tagName="li"}}
+                        <a {{bind-attr href="view.href"}}>Overview</a>
                         {{/link-to}}
-                    {{/if}}
-
+                        <li class="divider"></li>
+                        {{#link-to 'users' tagName="li"}}
+                        <a {{bind-attr href="view.href"}}>Users</a>
+                        {{/link-to}}
+                        {{#link-to 'companies' tagName="li"}}
+                        <a {{bind-attr href="view.href"}}>Companies</a>
+                        {{/link-to}}
+                        {{#link-to 'surveys' tagName="li"}}
+                        <a {{bind-attr href="view.href"}}>Surveys</a>
+                        {{/link-to}}
+                    </ul>
+                </li>
+                {{else}}
+                {{#link-to "dashboard" tagName="li"}}
+                <a {{bind-attr href="view.href"}}>Dashboard</a>
+                {{/link-to}}
                 {{/if}}
-
-
-
+                {{/if}}
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 {{#if session.isAuthenticated}}

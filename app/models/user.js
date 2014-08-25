@@ -11,7 +11,7 @@ export default DS.Model.extend({
 	address: belongsTo('address'),
 	name: belongsTo('name'),
 	right:belongsTo('right'),
-
+	
 	prettyBirth: function(){
 		return moment(this.get('birth')).format('M/D/YYYY'); 
 	}.property('birth'),
