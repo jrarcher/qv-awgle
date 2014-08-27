@@ -15,6 +15,16 @@ default Ember.Route.extend(ApplicationRouteMixin, {
 			user.right = user.right[0];
 			this.get('session').set('auth_user', user);
 			this._super();
+		},
+		loading: function() {
+			var controller = this.controllerFor('application');
+			controller.set('loading', true);
+			this.router.one('didTransition', function() {
+				controller.set('loading', false);
+			});
+		},
+		finished: function() {
+			this.controllerFor('application').set('loading', false);
 		}
 	}
 });

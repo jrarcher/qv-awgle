@@ -8,7 +8,7 @@ export default Ember.ArrayController.extend({
 			this.toggleProperty('sortAscending');
 		},
 		addUser:function(){
-			this.transitionTo('users.new');
+			this.transitionToRoute('users.new');
 		}
 	}
 });

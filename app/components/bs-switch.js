@@ -47,7 +47,7 @@ export default Em.Component.extend({
         if (self.get('action')){
           self.sendAction('action', self.get('name'), state);
         }
-     })
+     });
   }.on('didInsertElement')
 });
 			

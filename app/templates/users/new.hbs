@@ -1,57 +1,210 @@
-<div class="panel panel-success">
-    <div class="panel-heading">
-        <h3 class="panel-title">New User</h3>
-    </div>
-    <div class="panel-body">
-        <div class="row">
-            <!-- COLUMN 1 -->
-            <div class="col-md-6">
-                <div class="panel panel-info">
-                    <!-- Default panel contents -->
-                    <div class="panel-heading">Rights</div>
-                    <div class="panel-body">
-                        <div class="row">
-                            <div class="col-md-4">
-                                {{username}}
-
-                            </div>
-                            <div class="col-md-4">
-                                can view: {{canViewUser}}
-                            </div>
-                            <div class="col-md-4">
-                                <div class="btn btn-success" {{action "saveUser"}}></div>
-                            </div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-success">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-sm-10">
+                        <h3 class="panel-title">New User</h3>
+                    </div>
+                    <div class="col-sm-2">
+                        <div class="btn btn-success btn-sm pull-right" title="Add User" {{action 'cancel'}}>
+                            <i class="fa fa-times"></i>
                         </div>
                     </div>
-                    <!-- Table -->
-                    <table class="table table-condensed">
-                        <thead>
-                            <th>User</th>
-                            <th>Company</th>
-                            <th>Survey</th>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>{{bs-switch labelText="View" onState=canViewUser action="changeState" name="canViewUser"}}</td>
-                                <td>{{bs-switch labelText="View" onState=canViewCompany action="changeState" name="canViewCompany"}}</td>
-                                <td>{{bs-switch labelText="View" onState=canViewSurvey action="changeState" name="canViewSurvey"}}</td>
-                            </tr>
-                            <tr>
-                                <td>{{bs-switch labelText="Edit" onState=canEditUser action="changeState" name="canEditUser"}}</td>
-                                <td>{{bs-switch labelText="Edit" onState=canEditCompany action="changeState" name="canEditCompany"}}</td>
-                                <td>{{bs-switch labelText="Edit" onState=canEditSurvey action="changeState" name="canEditSurvey"}}</td>
-                            </tr>
-                            <tr>
-                                <td>{{bs-switch labelText="Delete" onState=canDeleteUser action="changeState" name="canDeleteUser"}}</td>
-                                <td>{{bs-switch labelText="Delete" onState=canDeleteCompany action="changeState" name="canDeleteCompany"}}</td>
-                                <td>{{bs-switch labelText="Delete" onState=canDeleteSurvey action="changeState" name="canDeleteSurvey"}}</td>
-                            </tr>
-                        </tbody>
-                    </table>
                 </div>
             </div>
-            <!-- COLUMN 2 -->
-            <div class="col-md-6">
+            <div class="panel-body">
+                <div class="row">
+                    <!-- COLUMN 1 -->
+                    <!-- GENERAL -->
+                    <div class="col-md-6">
+                        <div class="panel panel-info">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">General</h3>
+                            </div>
+                            <div class="panel-body">
+                                <div class="form-group">
+                                    {{input type="text" class="form-control" value=username placeholder="Email"}}
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-5">
+                                        <div class="form-group">
+                                            {{input type="password" class="form-control" value=password placeholder="Password"}}
+                                        </div>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <div class="form-group">
+                                            {{input type="password" class="form-control" value=passwordAgain placeholder="Password Again"}}
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="btn btn-success btn-block"><i class="fa fa-info"></i></div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    {{view Ember.Select class="form-control"
+                                    content=genders
+                                    value=gender
+                                    optionValuePath="content.val"
+                                    optionLabelPath="content.key"
+                                    prompt="Gender"
+                                    }}
+                                </div>
+                                <div class="form-group">
+                                    {{date-picker class="form-control" outputFormat="MM/DD/YYYY"}}
+                                </div>
+                            </div>
+                        </div>
+                        <!-- END GENERAL -->
+                        <!-- RIGHTS -->
+                        <div class="panel panel-info">
+                            <!-- Default panel contents -->
+                            <div class="panel-heading">Rights</div>
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-md-4 low-margin">
+                                        <div class="panel panel-default">
+                                            <div class="panel-heading">
+                                                <span class="panel-title">User</span>
+                                                <div class="btn-group btn-group-xs pull-right">
+                                                    <div class="btn btn-danger"
+                                                     {{action "toggleRights" "user" false}} title="Disable All">    
+                                                        <i class="fa fa-times-circle-o fa-lg"></i>
+                                                    </div>
+                                                    <div class="btn btn-success"
+                                                     {{action "toggleRights" "user" true}} title="Enable All">    
+                                                        <i class="fa fa-check-square-o fa-lg"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="panel-body">
+                                                <div class="row">
+                                                    <div class="col-md-12 switch-holder">
+                                                        {{bs-switch labelText="View" onState=canViewUser action="changeState" name="canViewUser"}}
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-12 switch-holder">
+                                                        {{bs-switch labelText="Edit" onState=canEditUser action="changeState" name="canEditUser"}}
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-12 switch-holder">
+                                                        {{bs-switch labelText="Delete" onState=canDeleteUser action="changeState" name="canDeleteUser"}}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 low-margin">
+                                        <div class="panel panel-default">
+                                            <div class="panel-heading">
+                                                <span class="panel-title">Company</span>
+                                                 <div class="btn-group btn-group-xs pull-right">
+                                                    <div class="btn btn-danger"
+                                                     {{action "toggleRights" "company" false}} title="Disable All">    
+                                                        <i class="fa fa-times-circle-o fa-lg"></i>
+                                                    </div>
+                                                    <div class="btn btn-success"
+                                                     {{action "toggleRights" "company" true}} title="Enable All">    
+                                                        <i class="fa fa-check-square-o fa-lg"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="panel-body">
+                                                <div class="row">
+                                                    <div class="col-md-12 switch-holder">
+                                                        {{bs-switch labelText="View" onState=canViewCompany action="changeState" name="canViewCompany"}}
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-12 switch-holder">
+                                                        {{bs-switch labelText="Edit" onState=canEditCompany action="changeState" name="canEditCompany"}}
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-12 switch-holder">
+                                                        {{bs-switch labelText="Delete" onState=canDeleteCompany action="changeState" name="canDeleteCompany"}}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 low-margin">
+                                        <div class="panel panel-default">
+                                            <div class="panel-heading">
+                                                <span class="panel-title">Survey</span>
+                                                 <div class="btn-group btn-group-xs pull-right">
+                                                    <div class="btn btn-danger"
+                                                     {{action "toggleRights" "survey" false}} title="Disable All">    
+                                                        <i class="fa fa-times-circle-o fa-lg"></i>
+                                                    </div>
+                                                    <div class="btn btn-success"
+                                                     {{action "toggleRights" "survey" true}} title="Enable All">    
+                                                        <i class="fa fa-check-square-o fa-lg"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="panel-body">
+                                                <div class="row">
+                                                    <div class="col-md-12 switch-holder">
+                                                        {{bs-switch labelText="View" onState=canViewSurvey action="changeState" name="canViewSurvey"}}
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-12 switch-holder">
+                                                        {{bs-switch labelText="Edit" onState=canEditSurvey action="changeState" name="canEditSurvey"}}
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-12 switch-holder">
+                                                        {{bs-switch labelText="Delete" onState=canDeleteSurvey action="changeState" name="canDeleteSurvey"}}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6 switch-holder">
+                                        {{bs-switch labelText="is Admin" onState=isAdmin action="changeState" name="isAdmin"}}
+                                    </div>
+                                    <div class="col-md-6 switch-holder">
+                                        {{bs-switch labelText="make Admin"
+                                        onState=canMakeAdmin
+                                        action="changeState"
+                                        name="canMakeAdmin"
+                                        }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- END RIGHTS -->
+                    </div>
+                    <!-- COLUMN 2 -->
+                    <div class="col-md-6">
+                        <!-- NAME -->
+                        <div class="panel panel-info">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Name</h3>
+                            </div>
+                            <div class="panel-body">
+                                Panel content
+                            </div>
+                        </div>
+                        <!-- END NAME -->
+                        <!-- ADDRESS -->
+                        <div class="panel panel-info">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Address</h3>
+                            </div>
+                            <div class="panel-body">
+                                Panel content
+                            </div>
+                        </div>
+                        <!-- END ADDRESS -->
+                    </div>
+                </div>
             </div>
         </div>
     </div>

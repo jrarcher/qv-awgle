@@ -20,6 +20,12 @@ html, body {
 .user-table{
 	overflow: auto;
 }
-.my-wrapper{
-	width:300px;
+.switch-holder .bootstrap-switch{
+	width:100% !important;
+}
+.low-margin{
+	padding:3px;
+}
+.shrink{
+	width:75%;
 }

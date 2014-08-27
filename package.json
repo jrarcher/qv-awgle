@@ -33,6 +33,8 @@
     "ember-cli-simple-auth": "~0.6.4-1",
     "ember-cli-simple-auth-oauth2": "~0.6.4-1",
     "broccoli-merge-trees": "~0.1.4",
-    "broccoli-static-compiler": "~0.1.4"
+    "broccoli-static-compiler": "~0.1.4",
+    "ember-cli-datepicker": "~0.3.2",
+    "ember-cli-sass": "~1.0.1"
   }
 }
