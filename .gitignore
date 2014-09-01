@@ -16,3 +16,8 @@
 /libpeerconnection.log
 npm-debug.log
 testem.log
+bower_components
+.editorconfig
+.travis.yml
+crossdomain.xml
+robots.txt

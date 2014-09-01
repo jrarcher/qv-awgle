@@ -14,14 +14,11 @@
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
   </head>
   <body>
-    <script>
-      window.QvENV = {{ENV}};
-      window.ENV = window.QvENV;
-      window.EmberENV = window.QvENV.EmberENV;
-    </script>
     <script src="assets/vendor.js"></script>
     <script src="assets/qv.js"></script>
     <script>
+      window.QvENV = require('qv/config/environment')['default'];
+      window.EmberENV = window.QvENV.EmberENV;
       window.Qv = require('qv/app')['default'].create(QvENV.APP);
     </script>
   </body>

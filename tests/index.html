@@ -33,15 +33,14 @@
     <div id="qunit"></div>
     <div id="qunit-fixture"></div>
 
-    <script>
-      window.QvENV = {{ENV}};
-      window.EmberENV = window.QvENV.EmberENV;
-    </script>
-    <script src="assets/test-support.js"></script>
     <script src="assets/vendor.js"></script>
+    <script src="assets/test-support.js"></script>
     <script src="assets/qv.js"></script>
     <script src="testem.js"></script>
     <script>
+      window.QvENV = require('qv/config/environment')['default'];
+      window.EmberENV = window.QvENV.EmberENV;
+
       require('qv/tests/test-helper');
     </script>
     <script src="assets/test-loader.js"></script>

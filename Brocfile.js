@@ -19,8 +19,8 @@ var app = new EmberApp();
 
 app.import('vendor/bootstrap/dist/css/bootstrap.css');
 app.import('vendor/bootstrap/dist/js/bootstrap.js');
-app.import('vendor/ember-animated-outlet/ember-animated-outlet.css');
-app.import('vendor/ember-animated-outlet/ember-animated-outlet.js');
+// app.import('vendor/ember-animated-outlet/ember-animated-outlet.css');
+// app.import('vendor/ember-animated-outlet/ember-animated-outlet.js');
 app.import('vendor/bs-switch/dist/css/bootstrap3/bootstrap-switch.css');
 app.import('vendor/bs-switch/dist/js/bootstrap-switch.js');
 module.exports = app.toTree();
