@@ -30,6 +30,10 @@
     "glob": "^4.0.5",
     "ember-cli-simple-auth": "~0.6.4-1",
     "ember-cli-simple-auth-oauth2": "~0.6.4-1",
-    "ember-cli-datepicker": "~0.3.4"
+    "ember-cli-datepicker": "~0.3.4",
+    "ember-cli-compass-bootstrap": "0.0.5",
+    "broccoli-merge-trees": "^0.1.4",
+    "broccoli-static-compiler": "^0.1.4",
+    "broccoli-sass": "^0.2.0"
   }
 }
