@@ -12,6 +12,7 @@ default Em.ObjectController.extend({
 		key: 'N/A',
 		val: 2
 	}],
+	prefixes:['Mr.', 'Ms.', 'Mrs.'],
 	selectedGender: null,
 	username: Em.computed.alias('model.username'),
 	password: null,
@@ -42,9 +43,6 @@ default Em.ObjectController.extend({
 	canEditSurvey: Em.computed.alias('model.right.canEditSurvey'),
 	canDeleteSurvey: Em.computed.alias('model.right.canDeleteSurvey'),
 	canMakeAdmin: Em.computed.alias('model.right.canMakeAdmin'),
-	allUserEnabled: Em.computed.and('canViewUser', 'canEditUser', 'canDeleteUser'),
-	allCompanyEnabled: Em.computed.and('canViewCompany', 'canEditCompany', 'canDeleteCompany'),
-	allSurveyEnabled: Em.computed.and('canViewSurvey', 'canEditSurvey', 'canDeleteSurvey'),
 	actions: {
 		saveUser: function() {
 			var model = this.get('model');
