@@ -11,6 +11,7 @@ export default DS.Model.extend({
 	address: belongsTo('address'),
 	name: belongsTo('name'),
 	right:belongsTo('right'),
+	// password:attr('string'),
 	
 	prettyBirth: function(){
 		return moment(this.get('birth')).format('M/D/YYYY'); 

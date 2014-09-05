@@ -3,14 +3,14 @@ import Em from 'ember';
 export
 default Em.ObjectController.extend(Em.Validations.Mixin,{
 	genders: [{
-		key: 'Female',
-		val: 0
+		name: 'Female',
+		id: 0
 	}, {
-		key: 'Male',
-		val: 1
+		name: 'Male',
+		id: 1
 	}, {
-		key: 'N/A',
-		val: 2
+		name: 'N/A',
+		id: 2
 	}],
 	prefixes:['Mr.', 'Ms.', 'Mrs.'],
 	suffixes:['Jr.', 'Sr.', 'III', 'Esq.'],
