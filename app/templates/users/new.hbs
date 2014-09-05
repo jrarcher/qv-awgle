@@ -1,13 +1,13 @@
 <div class="row">
-    <div class="col-md-12">
-        <div class="panel panel-success">
+    <div class="col-md-6 col-md-offset-3">
+        <div class="panel panel-primary">
             <div class="panel-heading">
                 <div class="row">
                     <div class="col-sm-10">
                         <h3 class="panel-title">New User</h3>
                     </div>
                     <div class="col-sm-2">
-                        <div class="btn btn-success btn-sm pull-right" title="Add User" {{action 'cancel'}}>
+                        <div class="btn btn-danger btn-sm pull-right" title="Cancel" {{action 'cancel'}}>
                             <i class="fa fa-times"></i>
                         </div>
                     </div>
@@ -17,7 +17,7 @@
                 <div class="row">
                     <!-- COLUMN 1 -->
                     <!-- GENERAL -->
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                         <div class="panel panel-info">
                             <div class="panel-heading">
                                 <h3 class="panel-title">General</h3>
@@ -53,15 +53,106 @@
                                         }}
                                     </div>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-1">
+                                        <p class="form-control-static text-center">Birth:</p>
+                                    </div>
+                                    <div class="col-md-5">
                                     <div class="form-group">
-                                        {{date-picker class="form-control" outputFormat="MM/DD/YYYY"}}
+                                        {{date-picker class="form-control" placeholder="Birth date" outputFormat="MM/DD/YYYY" value=model.birth}}
                                     </div>
                                 </div>
                                 </div>
                             </div>
                         </div>
                         <!-- END GENERAL -->
+                        <!-- NAME -->
+                        <div class="panel panel-info">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Name</h3>
+                            </div>
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-md-2">
+                                    <div class="form-group">
+                                        {{view Ember.Select class="form-control"
+                                        content=prefixes
+                                        value=model.name.prefix
+                                        prompt="Prefix"
+                                        }}
+                                    </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            {{input type="text" class="form-control" placeholder="First" value=model.name.first}}    
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            {{input type="text" class="form-control" placeholder="Middle" value=model.name.middle}}
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            {{input type="text" class="form-control" placeholder="Last" value=model.name.last}}
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                    <div class="form-group">
+                                        {{view Ember.Select class="form-control"
+                                        content=suffixes
+                                        value=model.name.suffix
+                                        prompt="Suffix"
+                                        }}
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- END NAME -->
+                        <!-- ADDRESS -->
+                        <div class="panel panel-info">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Address</h3>
+                            </div>
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                        <div class="form-group">
+                                            {{input type="text" class="form-control" value=model.address.street1 placeholder="Street1"}}
+                                            </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                        <div class="form-group">
+                                            {{input type="text" class="form-control" value=model.address.street2 placeholder="Street2"}}
+                                            </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                                        <div class="form-group">
+                                        {{input type="text" class="form-control" value=model.address.city placeholder="City"}}
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                                        <div class="form-group">
+                                        {{view Ember.Select class="form-control"
+                                        content=states
+                                        value=model.address.state
+                                        prompt="State"
+                                        }}
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                                        <div class="form-group">
+                                        {{input type="text" class="form-control" value=model.address.zip placeholder="Zip"}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- END ADDRESS -->
                         <!-- RIGHTS -->
                         <div class="panel panel-info">
                             <!-- Default panel contents -->
@@ -70,8 +161,8 @@
                             </div>
                             <div class="panel-body">
                                 <div class="row">
-                                    <div class="col-md-4 low-margin">
-                                        <div class="panel panel-default">
+                                    <div class="col-md-4">
+                                        <div class="panel panel-success">
                                             <div class="panel-heading">
                                                 <span class="h5">User</span>
                                                 <div class="btn-group btn-group-xs pull-right">
@@ -104,8 +195,8 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-4 low-margin">
-                                        <div class="panel panel-default">
+                                    <div class="col-md-4">
+                                        <div class="panel panel-success">
                                             <div class="panel-heading">
                                                 <span class="h5">Company</span>
                                                  <div class="btn-group btn-group-xs pull-right">
@@ -138,8 +229,8 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-4 low-margin">
-                                        <div class="panel panel-default">
+                                    <div class="col-md-4">
+                                        <div class="panel panel-success">
                                             <div class="panel-heading">
                                                 <span class="h5">Survey</span>
                                                  <div class="btn-group btn-group-xs pull-right">
@@ -189,63 +280,12 @@
                         </div>
                         <!-- END RIGHTS -->
                     </div>
-                    <!-- COLUMN 2 -->
-                    <div class="col-md-6">
-                        <!-- NAME -->
-                        <div class="panel panel-info">
-                            <div class="panel-heading">
-                                <h3 class="panel-title">Name</h3>
-                            </div>
-                            <div class="panel-body">
-                                <div class="row">
-                                    <div class="col-md-2">
-                                    <div class="form-group">
-                                        {{view Ember.Select class="form-control"
-                                        content=prefixes
-                                        value=model.name.prefix
-                                        prompt="Prefix"
-                                        }}
-                                    </div>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <div class="form-group">
-                                            {{input type="text" class="form-control" placeholder="First" value=model.name.first}}    
-                                        </div>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <div class="form-group">
-                                            {{input type="text" class="form-control" placeholder="Middle" value=model.name.middle}}
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <div class="form-group">
-                                            {{input type="text" class="form-control" placeholder="Last" value=model.name.last}}
-                                        </div>
-                                    </div>
-                                    <div class="col-md-2">
-                                    <div class="form-group">
-                                        {{view Ember.Select class="form-control"
-                                        content=prefixes
-                                        value=model.name.prefix
-                                        prompt="Prefix"
-                                        }}
-                                    </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- END NAME -->
-                        <!-- ADDRESS -->
-                        <div class="panel panel-info">
-                            <div class="panel-heading">
-                                <h3 class="panel-title">Address</h3>
-                            </div>
-                            <div class="panel-body">
-                                Panel content
-                            </div>
-                        </div>
-                        <!-- END ADDRESS -->
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <div class="btn btn-success pull-right" {{action "saveUser"}}>Save User</div>    
                     </div>
+                    
                 </div>
             </div>
         </div>

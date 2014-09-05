@@ -1,7 +1,7 @@
 import Em from 'ember';
 
 export
-default Em.ObjectController.extend({
+default Em.ObjectController.extend(Em.Validations.Mixin,{
 	genders: [{
 		key: 'Female',
 		val: 0
@@ -13,6 +13,8 @@ default Em.ObjectController.extend({
 		val: 2
 	}],
 	prefixes:['Mr.', 'Ms.', 'Mrs.'],
+	suffixes:['Jr.', 'Sr.', 'III', 'Esq.'],
+	states:['TX', 'OR', 'OK', 'LA', 'NM'],
 	selectedGender: null,
 	username: Em.computed.alias('model.username'),
 	password: null,
@@ -46,7 +48,10 @@ default Em.ObjectController.extend({
 	actions: {
 		saveUser: function() {
 			var model = this.get('model');
-			console.log(model);
+			model.set('password', this.get('password'));
+			model.save().then(function(){
+				console.log('saved!!!');
+			});
 		},
 		changeState: function(right, state) {
 			this.get('model.right').set(right, state);
@@ -132,6 +137,4 @@ default Em.ObjectController.extend({
 			}
 		}
 	}
-
-
 });

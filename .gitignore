@@ -8,6 +8,8 @@
 /node_modules
 /vendor/*
 !/vendor/bs-switch
+!/vendor/ember-animated-outlet
+!/vendor/ember-validations
 
 # misc
 /.sass-cache

@@ -19,10 +19,15 @@ var app = new EmberApp();
 // please specify an object with the list of modules as keys
 // along with the exports of each module as its value.
 
-// app.import('vendor/ember-animated-outlet/ember-animated-outlet.css');
-// app.import('vendor/ember-animated-outlet/ember-animated-outlet.js');
+app.import('vendor/ember-animated-outlet/ember-animated-outlet.css');
+app.import('vendor/ember-animated-outlet/ember-animated-outlet.js');
 app.import('vendor/bs-switch/dist/css/bootstrap3/bootstrap-switch.css');
 app.import('vendor/bs-switch/dist/js/bootstrap-switch.js');
+app.import('vendor/ember-validations/dist/ember-validations.js');
+app.import('bower_components/ember-components/dist/globals/main.js');
+app.import('bower_components/ember-utils/dist/globals/main.js');
+app.import('bower_components/ember-forms/dist/globals/main.js');
+
 var bootstrapDir = 'bower_components/bootstrap-sass-official/assets';
 
 // select bootstrap JavaScript components to include
