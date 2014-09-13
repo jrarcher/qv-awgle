@@ -1,20 +1,11 @@
 <div class="container-fluid">
-    <div class="panel panel-primary users-panel">
+    <div class="panel panel-primary">
         <div class="panel-heading">
             <div class="row">
-                <div class="col-sm-10">
+                <div class="col-md-1">
                     <h3 class="panel-title">Users</h3>
                 </div>
-                <div class="col-sm-2">
-                    <div class="btn btn-success btn-sm pull-right" title="Add User" {{action 'addUser'}}>
-                    		<i class="fa fa-plus"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="panel-body">
-            <div class="panel panel-success">
-                <div class="panel-body">
+                <div class="col-md-10">
                     <div class="row">
                         <div class="col-sm-6">
                             <div class="input-group">
@@ -37,47 +28,16 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            {{#each}}
-            <div class="panel panel-success user-card">
-                <div class="panel-heading">
-                    <div class="row">
-                        <div class="col-xs-9">
-                            <h3 class="panel-title">{{username}}</h3>
-                        </div>
-                        <div class="col-xs-3">
-                            <div class="btn-group btn-group-xs pull-right">
-                                <button type="button" class="btn btn-warning" title="Edit"><i class="fa fa-pencil"></i></button>
-                                <button type="button" class="btn btn-danger" title="Delete"><i class="fa fa-times"></i></button>
-                            </div>
-                        </div>
+                <div class="col-md-1">
+                    <div class="btn btn-success btn-block" title="Add User" {{action 'addUser'}}>
+                        Add User
                     </div>
                 </div>
-                <!-- <div class="panel-body">
-                </div> -->
-                <table class="table table-condensed">
-                    <tr>
-                        <td><span>Name:</span></td>
-                        <td><span class="text-left">{{name.prettyName}}</span></td>
-                    </tr>
-                    <tr>
-                        <td><span>Birth Date:</span></td>
-                        <td><span class="text-left">{{prettyBirth}}</span></td>
-                    </tr>
-                    <tr>
-                        <td><span>Created:</span></td>
-                        <td><span class="text-left">{{prettyCreated}}</span></td>
-                    </tr>
-                    <tr>
-                        <td><span>Points:</span></td>
-                        <td><span class="text-left">{{points}}</span></td>
-                    </tr>
-                    <tr>
-                        <td><span>Verified:</span></td>
-                        <td><span class="text-left">{{verified}}</span></td>
-                    </tr>
-                </table>
             </div>
+        </div>
+        <div class="panel-body users-panel">
+            {{#each}}
+            {{render "userCard" this}}
             {{/each}}
         </div>
     </div>

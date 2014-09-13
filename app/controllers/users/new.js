@@ -1,8 +1,12 @@
 import Em from 'ember';
 
 export
-default Em.ObjectController.extend(Em.Validations.Mixin,{
+default Em.ObjectController.extend({
+	errorMessage:null,
 	genders: [{
+		key: 'Gender',
+		val: -1,
+	},{
 		key: 'Female',
 		val: 0
 	}, {
@@ -12,28 +16,18 @@ default Em.ObjectController.extend(Em.Validations.Mixin,{
 		key: 'N/A',
 		val: 2
 	}],
-	prefixes:['Mr.', 'Ms.', 'Mrs.'],
-	suffixes:['Jr.', 'Sr.', 'III', 'Esq.'],
-	states:['TX', 'OR', 'OK', 'LA', 'NM'],
-	selectedGender: null,
-	username: Em.computed.alias('model.username'),
-	password: null,
-	passwordAgain: null,
-	gender: Em.computed.alias('model.gender'),
-	birth: null,
-	street1: null,
-	street2: null,
-	city: null,
-	state: null,
-	zip: null,
-	country: null,
-	lat: null,
-	lon: null,
-	first: null,
-	last: null,
-	middle: null,
-	prefix: null,
-	suffix: null,
+	prefixes: ['Mr.', 'Ms.', 'Mrs.'],
+	suffixes: ['Jr.', 'Sr.', 'III', 'Esq.'],
+	states: ['TX', 'OR', 'OK', 'LA', 'NM'],
+	thisDate: function() {
+		return moment().subtract('years', 18);
+	}.property(),
+	yearRanges: function() {
+		var year = moment().year(),
+			startYear = year - 100,
+			endYear = year - 18;
+		return [startYear, endYear];
+	}.property(),
 	isAdmin: Em.computed.alias('model.right.isAdmin'),
 	canViewUser: Em.computed.alias('model.right.canViewUser'),
 	canEditUser: Em.computed.alias('model.right.canEditUser'),
@@ -45,93 +39,107 @@ default Em.ObjectController.extend(Em.Validations.Mixin,{
 	canEditSurvey: Em.computed.alias('model.right.canEditSurvey'),
 	canDeleteSurvey: Em.computed.alias('model.right.canDeleteSurvey'),
 	canMakeAdmin: Em.computed.alias('model.right.canMakeAdmin'),
+	isClosing:false,
 	actions: {
+		closePage:function(){
+			this.set('isClosing', true);
+			this.store.deleteRecord(this.get('model'));
+			this.transitionToRoute('users.index');
+		},
+		cancelClose:function(){
+			Em.$('#newUserExit').slideUp();
+		},
 		saveUser: function() {
-			var model = this.get('model');
-			model.set('password', this.get('password'));
-			model.save().then(function(){
-				console.log('saved!!!');
+			var model = this.get('model'),
+			that = this;
+			model.save().then(function() {
+				//success
+				that.set('isClosing', true);
+				that.transitionToRoute('users.index');
+			},function(err){
+				//fail
+				var errorText;
+				if (err){
+					errorText = err.responseJSON.errorText;
+				}
+				that.set('errorMessage', errorText);
 			});
 		},
 		changeState: function(right, state) {
 			this.get('model.right').set(right, state);
 		},
 		cancel: function() {
-			this.store.deleteRecord(this.get('model'));
-			this.transitionToRoute('users.index');
+			Em.$('#newUserExit').slideDown();
 		},
 		toggleRights: function(key, enable) {
 			switch (key) {
 				case "user":
-					if (enable){
-						if (!this.get('canViewUser')){
+					if (enable) {
+						if (!this.get('canViewUser')) {
 							Em.$('[name="canViewUser"]')[0].click();
 						}
-						if (!this.get('canEditUser')){
+						if (!this.get('canEditUser')) {
 							Em.$('[name="canEditUser"]')[0].click();
 						}
-						if (!this.get('canDeleteUser')){
+						if (!this.get('canDeleteUser')) {
 							Em.$('[name="canDeleteUser"]')[0].click();
 						}
-					}
-					else{
-						if (this.get('canViewUser')){
+					} else {
+						if (this.get('canViewUser')) {
 							Em.$('[name="canViewUser"]')[0].click();
 						}
-						if (this.get('canEditUser')){
+						if (this.get('canEditUser')) {
 							Em.$('[name="canEditUser"]')[0].click();
 						}
-						if (this.get('canDeleteUser')){
+						if (this.get('canDeleteUser')) {
 							Em.$('[name="canDeleteUser"]')[0].click();
-						}	
+						}
 					}
 					break;
 				case "company":
-					if (enable){
-						if (!this.get('canViewCompany')){
+					if (enable) {
+						if (!this.get('canViewCompany')) {
 							Em.$('[name="canViewCompany"]')[0].click();
 						}
-						if (!this.get('canEditCompany')){
+						if (!this.get('canEditCompany')) {
 							Em.$('[name="canEditCompany"]')[0].click();
 						}
-						if (!this.get('canDeleteCompany')){
+						if (!this.get('canDeleteCompany')) {
 							Em.$('[name="canDeleteCompany"]')[0].click();
 						}
-					}
-					else{
-						if (this.get('canViewCompany')){
+					} else {
+						if (this.get('canViewCompany')) {
 							Em.$('[name="canViewCompany"]')[0].click();
 						}
-						if (this.get('canEditCompany')){
+						if (this.get('canEditCompany')) {
 							Em.$('[name="canEditCompany"]')[0].click();
 						}
-						if (this.get('canDeleteCompany')){
+						if (this.get('canDeleteCompany')) {
 							Em.$('[name="canDeleteCompany"]')[0].click();
-						}	
+						}
 					}
 					break;
 				case "survey":
-					if (enable){
-						if (!this.get('canViewSurvey')){
+					if (enable) {
+						if (!this.get('canViewSurvey')) {
 							Em.$('[name="canViewSurvey"]')[0].click();
 						}
-						if (!this.get('canEditSurvey')){
+						if (!this.get('canEditSurvey')) {
 							Em.$('[name="canEditSurvey"]')[0].click();
 						}
-						if (!this.get('canDeleteSurvey')){
+						if (!this.get('canDeleteSurvey')) {
 							Em.$('[name="canDeleteSurvey"]')[0].click();
 						}
-					}
-					else{
-						if (this.get('canViewSurvey')){
+					} else {
+						if (this.get('canViewSurvey')) {
 							Em.$('[name="canViewSurvey"]')[0].click();
 						}
-						if (this.get('canEditSurvey')){
+						if (this.get('canEditSurvey')) {
 							Em.$('[name="canEditSurvey"]')[0].click();
 						}
-						if (this.get('canDeleteSurvey')){
+						if (this.get('canDeleteSurvey')) {
 							Em.$('[name="canDeleteSurvey"]')[0].click();
-						}	
+						}
 					}
 					break;
 			}

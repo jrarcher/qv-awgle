@@ -23,15 +23,24 @@ app.import('vendor/ember-animated-outlet/ember-animated-outlet.css');
 app.import('vendor/ember-animated-outlet/ember-animated-outlet.js');
 app.import('vendor/bs-switch/dist/css/bootstrap3/bootstrap-switch.css');
 app.import('vendor/bs-switch/dist/js/bootstrap-switch.js');
-app.import('vendor/ember-validations/dist/ember-validations.js');
-app.import('bower_components/ember-components/dist/globals/main.js');
-app.import('bower_components/ember-utils/dist/globals/main.js');
-app.import('bower_components/ember-forms/dist/globals/main.js');
+// app.import('vendor/ember-validations/dist/ember-validations.js');
 
 var bootstrapDir = 'bower_components/bootstrap-sass-official/assets';
 
 // select bootstrap JavaScript components to include
-var bootstrapComponents = ['dropdown', 'alert'];
+var bootstrapComponents = [
+'affix',
+'alert',
+'button',
+'carousel',
+'collapse',
+'dropdown',
+'modal',
+'tooltip',
+'popover',
+'scrollspy',
+'tab',
+'transition'];
 
 for (var index in bootstrapComponents) {
   app.import(bootstrapDir + '/javascripts/bootstrap/' + bootstrapComponents[index] + '.js');

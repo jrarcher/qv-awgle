@@ -1,6 +1,6 @@
-import Ember from 'ember';
+import Em from 'ember';
 
-export default Ember.ArrayController.extend({
+export default Em.ArrayController.extend({
 	sortAscending:true,
 	sortProperties:['username'],
 	actions:{
