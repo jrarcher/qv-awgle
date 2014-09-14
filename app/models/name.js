@@ -1,4 +1,5 @@
 import DS from "ember-data";
+import Em from "ember";
 var attr = DS.attr;
 export default DS.Model.extend({
 	first: attr('string'),
@@ -7,6 +8,14 @@ export default DS.Model.extend({
 	prefix: attr('string'),
 	suffix: attr('string'),
 	prettyName:function(){
-		return this.get('last') + ', ' + this.get('first');
+		var firstName = this.get('first'),
+		lastName = this.get('last');
+		if(Em.isNone(firstName) || Em.isNone(lastName)){
+			return 'Awgle User';
+		}
+		else{
+			return lastName + ', ' + firstName;	
+		}
+		
 	}.property('first', 'last')
 });

@@ -1,5 +1,7 @@
 import Em from 'ember';
 
 export default Em.ObjectController.extend({
-	testProp:null
+	testyProp:null,
+	actions:{
+	}
 });

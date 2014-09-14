@@ -1,6 +1,6 @@
 import Em from "ember";
 
-export default Ember.View.extend({
+export default Em.View.extend({
 	didInsertElement:function(){
 		Em.$('#newUserExit').hide();
 	}

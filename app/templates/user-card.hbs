@@ -1,13 +1,13 @@
 <div class="panel panel-success user-card" {{bind-attr id=elmId}}>
-    <div class="panel-heading">
+    <div class="panel-heading" {{action "showUser" this}}>
         <div class="row">
             <div class="col-xs-9">
                 <h3 class="panel-title">{{username}}</h3>
             </div>
             <div class="col-xs-3">
                 <div class="btn-group btn-group-xs pull-right">
-                    <button type="button" class="btn btn-warning" title="Edit"><i class="fa fa-pencil"></i></button>
-                    <button type="button" class="btn btn-danger" title="Delete" {{action "showDeleteConfirm"}}><i class="fa fa-times"></i></button>
+                    <button type="button" class="btn btn-warning" title="Edit" {{action "editUser" this bubbles=false}}><i class="fa fa-pencil"></i></button>
+                    <button type="button" class="btn btn-danger" title="Delete" {{action "showDeleteConfirm" bubbles=false}}><i class="fa fa-times"></i></button>
                 </div>
             </div>
         </div>

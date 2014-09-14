@@ -47,13 +47,14 @@ default Em.ObjectController.extend({
 			this.transitionToRoute('users.index');
 		},
 		cancelClose:function(){
-			Em.$('#newUserExit').slideUp();
+			Em.$('#newUserExit').slideUp('fast');
 		},
 		saveUser: function() {
 			var model = this.get('model'),
 			that = this;
 			model.save().then(function() {
 				//success
+				model.deleteRecord();
 				that.set('isClosing', true);
 				that.transitionToRoute('users.index');
 			},function(err){
@@ -69,7 +70,7 @@ default Em.ObjectController.extend({
 			this.get('model.right').set(right, state);
 		},
 		cancel: function() {
-			Em.$('#newUserExit').slideDown();
+			Em.$('#newUserExit').slideDown('fast');
 		},
 		toggleRights: function(key, enable) {
 			switch (key) {
