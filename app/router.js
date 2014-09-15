@@ -27,9 +27,9 @@ Router.map(function() {
 	this.resource('users',function(){
 		this.route('index', {path:'/'});
 		this.route('new');
+		this.route('edit');
 		this.resource('user', function(){
 			this.route('index', {path:'/:id'});
-			this.route('edit');
 		});
 	});
 	this.resource('surveys',function(){

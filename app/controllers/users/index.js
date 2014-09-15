@@ -8,7 +8,7 @@ export default Em.ArrayController.extend({
 			this.toggleProperty('sortAscending');
 		},
 		addUser:function(){
-			this.transitionToRoute('users.new');
+			this.transitionToRouteAnimated('users.new', {users:'slideLeft'});
 		}
 	}
 });

@@ -15,11 +15,18 @@ default Em.Route.extend(AuthenticatedRouteMixin, {
 	},
 	actions: {
 		willTransition: function(transition) {
-			if (!this.controller.get('isClosing')){
+			if (!this.controller.get('isClosing')) {
 				transition.abort();
-				Em.$('#newUserExit').show();	
+				Em.$('#newUserExit').show();
+			} else {
+				Em.AnimatedContainerView.enqueueAnimations({
+					users: 'slideRight'
+				});
 			}
-			
+		},
+		didTransition: function() {
+			this.controller.set('isClosing', false);
+			return true;
 		}
 	}
 

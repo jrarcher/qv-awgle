@@ -7,10 +7,6 @@ default Em.ObjectController.extend({
 		return elmId;
 	}.property('model.id'),
 	actions: {
-		showUser:function(user){
-			// window.alert('show: ' + user.get('id'));
-			this.transitionToRoute('user', user);
-		},
 		editUser:function(user){
 			window.alert('edit: ' + user.get('id'));
 		},
