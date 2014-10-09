@@ -1,5 +1,5 @@
-<div class="panel panel-success user-card" {{bind-attr id=elmId}}>
-    <div class="panel-heading" {{action "showUser" this}}>
+<div class="panel panel-success user-card" {{bind-attr id=elmId}} {{action "showUser" this}}>
+    <div class="panel-heading">
         <div class="row">
             <div class="col-xs-9">
                 <h3 class="panel-title">{{username}}</h3>
@@ -21,8 +21,8 @@
                     </div>
                     <div class="col-md-4">
                         <span>
-                        <button type="button" class="btn btn-sm btn-success" {{action "destroyUser" this}}>Yes</button>
-                        <button type="button" class="btn btn-sm btn-danger" {{action "hideDeleteConfirm"}}>No</button>
+                        <button type="button" class="btn btn-sm btn-success" {{action "destroyUser" this bubbles=false}}>Yes</button>
+                        <button type="button" class="btn btn-sm btn-danger" {{action "hideDeleteConfirm" bubbles=false}}>No</button>
                         </span>
                     </div>
                 </div>

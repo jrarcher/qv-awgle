@@ -5,7 +5,7 @@ export default DS.Model.extend({
 	street1: attr('string'),
 	street2: attr('string'),
 	city: attr('string'),
-	state: attr('string'),
+	state: attr('number'),
 	zip: attr('string'),
 	country: attr('string'),
 	lat: attr('string'),

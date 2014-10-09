@@ -1,5 +1,5 @@
 import Ember from "ember";
+import Qv from "qv/views/qv";
 
-export default Ember.View.extend({
-
+export default Qv.extend({
 });

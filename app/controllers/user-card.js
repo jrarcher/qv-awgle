@@ -7,9 +7,6 @@ default Em.ObjectController.extend({
 		return elmId;
 	}.property('model.id'),
 	actions: {
-		editUser:function(user){
-			window.alert('edit: ' + user.get('id'));
-		},
 		showDeleteConfirm: function() {
 			var elm = '#' + this.get('elmId') + ' .deleteConfirm';
 			Em.$(elm).slideDown('fast');
@@ -21,7 +18,6 @@ default Em.ObjectController.extend({
 		destroyUser: function(user) {
 			user.destroyRecord().then(function() {
 				//success
-				// window.alert('DESTROYEEEDDDD!');
 			}, function(err) {
 				//failure
 				window.alert('OOPS');

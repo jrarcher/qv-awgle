@@ -5,8 +5,8 @@ export default DS.Model.extend({
 	first: attr('string'),
 	last: attr('string'),
 	middle: attr('string'),
-	prefix: attr('string'),
-	suffix: attr('string'),
+	prefix: attr('number'),
+	suffix: attr('number'),
 	prettyName:function(){
 		var firstName = this.get('first'),
 		lastName = this.get('last');

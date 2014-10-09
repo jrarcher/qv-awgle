@@ -23,7 +23,10 @@ app.import('vendor/ember-animated-outlet/ember-animated-outlet.css');
 app.import('vendor/ember-animated-outlet/ember-animated-outlet.js');
 app.import('vendor/bs-switch/dist/css/bootstrap3/bootstrap-switch.css');
 app.import('vendor/bs-switch/dist/js/bootstrap-switch.js');
-// app.import('vendor/ember-validations/dist/ember-validations.js');
+// app.import('bower_components/jquery-ui/themes/base/core.css');
+app.import('bower_components/jquery-ui/themes/cupertino/jquery-ui.min.css');
+app.import('bower_components/jquery-ui/ui/core.js');
+app.import('bower_components/jquery-ui/ui/datepicker.js');
 
 var bootstrapDir = 'bower_components/bootstrap-sass-official/assets';
 

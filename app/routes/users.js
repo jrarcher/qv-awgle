@@ -4,8 +4,12 @@ import AuthenticatedRouteMixin from 'simple-auth/mixins/authenticated-route-mixi
 export
 default Ember.Route.extend(AuthenticatedRouteMixin, {
 	actions: {
+		editUser: function(user) {
+			this.transitionToAnimated('user.edit', {
+				users: 'slideLeft'
+			}, user);
+		},
 		showUser: function(user) {
-			// window.alert('show: ' + user.get('id'));
 			this.transitionToAnimated('user.index', {
 				users: 'slideLeft'
 			}, user);

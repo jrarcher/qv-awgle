@@ -7,11 +7,13 @@ default Em.Route.extend(AuthenticatedRouteMixin, {
 		var names = this.store.createRecord('name');
 		var addys = this.store.createRecord('address');
 		var rights = this.store.createRecord('right');
-		return this.store.createRecord('user', {
+		var user =  this.store.createRecord('user', {
 			name: names,
 			address: addys,
 			right: rights
 		});
+		// user.set('isDirty',false);
+		return user;
 	},
 	actions: {
 		willTransition: function(transition) {
