@@ -7,19 +7,13 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    {{BASE_TAG}}
+    {{content-for 'head'}}
 
     <link rel="stylesheet" href="assets/vendor.css">
     <link rel="stylesheet" href="assets/qv.css">
-    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
   </head>
   <body>
     <script src="assets/vendor.js"></script>
     <script src="assets/qv.js"></script>
-    <script>
-      window.QvENV = require('qv/config/environment')['default'];
-      window.EmberENV = window.QvENV.EmberENV;
-      window.Qv = require('qv/app')['default'].create(QvENV.APP);
-    </script>
   </body>
 </html>
